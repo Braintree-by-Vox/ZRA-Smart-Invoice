@@ -35,19 +35,16 @@
 >The following system settings need to be configured.
 
 ### 2.1 <a name="_toc178688688"></a>Integration Setup
-<ol>
-<li>Open the ZRA Integration Setup menu.</li>
-<li>Select the **Integration Service Provider**</li>
-<li>Confirm that the **Target API URL** is correct for the Service Provider</li>
-<li>Enter the following fields 
-<ol>
-  <li>**API Key**</li>
-  <li>**SDC ID**</li>
-</ol>
-</li>
-<li>Lastly, **Enable** the integration</li>
-<li>If you want to host the list of commodity codes locally in the database, you can leave the **Use Web Service for commodity lookup** field disabled. Not all service providers do, but if the chosen Service Provider does support commodity code lookup, you can enable this feature.</li>
-</ol>
+
+1. Open the ZRA Integration Setup menu.
+2. Select the **Integration Service Provider**
+3. Confirm that the **Target API URL** is correct for the Service Provider
+4. Enter the following fields 
+    1. **API Key**
+    2. **SDC ID**
+5. Lastly, **Enable** the integration
+6. If you want to host the list of commodity codes locally in the database, you can leave the **Use Web Service for commodity lookup** field disabled. Not all service providers do, but if the chosen Service Provider does support commodity code lookup, you can enable this feature.
+
 
 ![image002](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image002.png)
 
@@ -93,10 +90,8 @@ Link supplier defined codes to the existing Payment Methods in Business Central.
 ### 2.8 <a name="_toc178688695"></a>User Management 
 Two Permission Sets have been added:
 
-<ol>
-<li>ZRA ALL BTR – For administrators of the integration, that are allowed to change the configuration.</li>
-<li>ZRA BASIC BTR – For all other users, so that the integration can happen in the background.</li>
-</ol>
+1. ZRA ALL BTR – For administrators of the integration, that are allowed to change the configuration.
+2. ZRA BASIC BTR – For all other users, so that the integration can happen in the background.
 
 >The system also maintains a list of users and assigns a unique integer to each user as required by the ZRA interface. This should not require any maintenance by an administrator.
 
@@ -108,15 +103,11 @@ Two Permission Sets have been added:
    The Braintree ZRA Smart Invoice Connector enables you to automate your tax compliance and submission processes with the ZRA system.
 
    Integration happens in the background and without user interaction. On posting of Sales and Purchase documents, the system creates:
-   <ol>
-   <li>Integration Entries. Serves as a log for what has or has not been submitted. 
-   <ol>
-      <li>Also carries status codes and messages for troubleshooting.</li>
-      <li>User can resubmit entries for processing from here.</li>
-   </ol>
-   </li>
-   <li>Job Queue Entries. Background process that is responsible for processing the requests.</li>
-   </ol>
+   
+   1. Integration Entries. Serves as a log for what has or has not been submitted. 
+      1. Also carries status codes and messages for troubleshooting.
+      2. User can resubmit entries for processing from here.
+   2. Job Queue Entries. Background process that is responsible for processing the requests.
 
 ![image010](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image010.png)
 
