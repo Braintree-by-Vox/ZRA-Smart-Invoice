@@ -55,6 +55,7 @@
 
 ### 2.2 <a name="_toc178688689"></a>Commodity Codes
 If service providers do not provide an API endpoint for the commodities, download and import the commodities list from the ZRA Item Category List.
+
 ![image003](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image003.png)
 
 ### 2.3 <a name="_toc178688690"></a>ZRA VAT Types
