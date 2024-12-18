@@ -18,6 +18,7 @@
     - [3.3 Job Queue](#33-job-queue)
     - [3.4 Customs Imports](#34-customs-imports)
   - [4. **Troubleshooting**](#4-troubleshooting)
+    - [4.1 Integration Entries](#41-integration-entries)
 
 
 ## 1. <a name="_toc178688686"></a>Introduction
@@ -46,14 +47,14 @@
 6. If you want to host the list of commodity codes locally in the database, you can leave the **Use Web Service for commodity lookup** field disabled. Not all service providers do, but if the chosen Service Provider does support commodity code lookup, you can enable this feature.
 
 
-![image002](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image002.png)
+![image002](./docs/images/image002.png)
 
 >The user can download a copy of ZRA Codes used for mapping in the system as described in this document.
 
 ### 2.2 <a name="_toc178688689"></a>Commodity Codes
 If service providers do not provide an API endpoint for the commodities, download and import the commodities list from the ZRA Item Category List.
 
-![image003](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image003.png)
+![image003](./docs/images/image003.png)
 
 ### 2.3 <a name="_toc178688690"></a>ZRA VAT Types
 A predefined list is created when the extension is installed. This list can be modified as required. 
@@ -65,27 +66,27 @@ Description of fields:
 - **Blocked**: *Not used yet, reserved for future use.* 
 - **Requires recommended Retail Price**: When enabled, requires items to be registered with a recommended retail price when this code is used on a transaction.
 
-![image004](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image004.png)
+![image004](./docs/images/image004.png)
 
 ### 2.4 <a name="_toc178688691"></a>VAT Product Posting Groups
 Link Zambian Tax Codes to VAT Product Posting Groups. This is the code used for Items when registering them with ZRA.
 
-![image005](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image005.png)
+![image005](./docs/images/image005.png)
 
 ### 2.5 <a name="_toc178688692"></a>VAT Posting Setups
 Link Zambian Tax Codes to VAT Posting Setup. These are the Tax codes used on document lines when the document is submitted to ZRA.
 
-![image006](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image006.png)
+![image006](./docs/images/image006.png)
 
 ### 2.6 <a name="_toc178688693"></a>Reason Codes
 Link the predefined service provider reason codes to the Reason Codes in Business Central.
 
-![image007](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image007.png)
+![image007](./docs/images/image007.png)
 
 ### 2.7 <a name="_toc178688694"></a>Payment Methods
 Link supplier defined codes to the existing Payment Methods in Business Central.
 
-![image008](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image008.png)
+![image008](./docs/images/image008.png)
 
 ### 2.8 <a name="_toc178688695"></a>User Management 
 Two Permission Sets have been added:
@@ -96,7 +97,7 @@ Two Permission Sets have been added:
 >The system also maintains a list of users and assigns a unique integer to each user as required by the ZRA interface. This should not require any maintenance by an administrator.
 
 
-![image009](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image009.png)
+![image009](./docs/images/image009.png)
 
 
 ## 3. <a name="_toc178688696"></a>Integration with ZRA
@@ -105,11 +106,11 @@ Two Permission Sets have been added:
    Integration happens in the background and without user interaction. On posting of Sales and Purchase documents, the system creates:
    
    1. Integration Entries. Serves as a log for what has or has not been submitted. 
-      1. Also carries status codes and messages for troubleshooting.
+      1. Also carries status codes and messages for troubleshooting. (See [4. **Troubleshooting**](#4-troubleshooting))
       2. User can resubmit entries for processing from here.
    2. Job Queue Entries. Background process that is responsible for processing the requests.
 
-![image010](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image010.png)
+![image010](./docs/images/image010.png)
 
 ### 3.1 <a name="_toc178688697"></a>Invoices & Credit Memos (Sales & Purchases)
 ZRA requires certain information on the documents. Checks have been put in place to ensure that they are captured before a document can be released and posted.
@@ -142,9 +143,9 @@ The ZRA Item Worksheet is used to register items with ZRA. It is a required step
 5. The filters for each entity will only apply if the entity is selected to be processed.
 6. Click OK. The worksheet is now populated with the default information for the entity. If the entity has been registered previously, the user will be able to update the record.
 
-    ![image011](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image011.png)
+    ![image011](./docs/images/image011.png)
 
-    ![image012](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image012.png)
+    ![image012](./docs/images/image012.png)
 
 7. Required fields:
    1. **New Description**
@@ -169,7 +170,7 @@ By default,
 1. *Import Purchase Orders*: If the service provider supports importing of purchase orders from other Smart Invoice customers, this will import the documents into a staging table.
 1. *Create BC Purchase Invoices*: If the service provider supports importing of purchase orders from other Smart Invoice customers, this will create purchase documents from the staging tables.
 
-![image013](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image013.png)
+![image013](./docs/images/image013.png)
 
 ### 3.4 <a name="_toc178688700"></a>Customs Imports
 The ZRA Smart Invoice system allows users to accept or reject goods sitting at customs. This can be done on the Service Provider’s portal, or in Business Central.
@@ -183,19 +184,42 @@ The ZRA Smart Invoice system allows users to accept or reject goods sitting at c
 7. When all lines are updated, click Approve Lines action on the header.
 1. This will submit your selection to the ZRA.
 
-![image014](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image014.png)
+![image014](./docs/images/image014.png)
 
-![image015](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image015.png)
+![image015](./docs/images/image015.png)
 
 
 ## 4. <a name="_toc178688701"></a>**Troubleshooting**
    If you encounter any issues or errors while using the Braintree ZRA Smart Invoice Connector, refer to the troubleshooting guide below:
 
+### 4.1 Integration Entries
+
 - Check the Integration Entry or Job Queue Entries for error messages
 - Verify that the system settings are correct
-- Contact the Braintree support team for assistance. 
+- Use the guide below to confirm what each status means and what actions can be taken.
+- The different states that an entry can be in, are:
+  - *New*: Newly created entry. The "Create Job Queue Entries from Integration Entries" Job Queue Entry, will pick-up these entries and schedule them for processing.
+  - *Validation Error*: An entry that fails its validation checks. No Job Queue Entry has been created.
+  - *Job Queue Created*: Job Queue Entry has been created and scheduled to run.
+  - *Error*: An error occurred when executing the Job Queue Entry.
+  - *Error Acknowledged*: An Error or Validation Error occurred, but it is an error that cannot be resolved with the integration, or the entry was created in error. Can only manually be set to this value.
+  - *Success*: Job Queue Entry executed successfully.
+- Actions on the Integration Entries page:
+  - Home
+    - *Show Source Document*: For document type entries, navigates to the source record for this entry.
+    - *Run once (foreground)*: If a Job Queue Entry exists, runs it immediately.
+    - *Reset Validation Error*: For selected records, where the **Status** = *Validation Error*, sets the **Status** to *New*, and clears the **Status Message**. This will allow the "Create Job Queue Entries from Integration Entries" Job Queue Entry to pick them up and schedule them for sending.
+  - Troubleshooting
+    - *Show Status Message*: Displays the detail of the **Status Message **in a pop-up dialog.
+    - *View Request Body*: If a Job Queue Entry exists, displays the content of the that has been parsed to be sent for processing.
+    - *Recreate Integation Entry*: 
+      - For all **Status**, except *Success*, it sets the **Status** = *New*, clears **Status Message** and attempts to create the Job Queue Entry. May result in Status being set to Validation Error if there are issues processing the data.
+      - If the **Status** = *Success*, it creates a copy of the entry, sets the **Status** = *New*, clears **Status Message** and attempts to create the Job Queue Entry. May result in Status being set to Validation Error if there are issues processing the data.
+    - *Acknowledge Error*: Sets the **Status** to "*Error Acknowledged*". This will let the entry be cleaned up by the "Clear completed integration entries" job.
+ 
+- If you are unable to resolve the issue, please feel free to contact the Braintree support team for assistance. 
 
 Email: <bcsupport@braintree.co.za>
 
 
-![Logo](./docs/Braintree%20ZRA%20Smart%20Invoice%20Connector%20User%20Guide_files/image001.jpg)
+![Logo](./docs/images/image001.jpg)
