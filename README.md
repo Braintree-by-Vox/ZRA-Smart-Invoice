@@ -17,8 +17,9 @@
     - [3.2 Item Worksheet](#32-item-worksheet)
     - [3.3 Job Queue](#33-job-queue)
     - [3.4 Customs Imports](#34-customs-imports)
-  - [4. **Troubleshooting**](#4-troubleshooting)
+  - [4. Troubleshooting](#4-troubleshooting)
     - [4.1 Integration Entries](#41-integration-entries)
+    - [4.2 Contact Us](#42-contact-us)
 
 
 ## 1. <a name="_toc178688686"></a>Introduction
@@ -189,7 +190,7 @@ The ZRA Smart Invoice system allows users to accept or reject goods sitting at c
 ![image015](./docs/images/image015.png)
 
 
-## 4. <a name="_toc178688701"></a>**Troubleshooting**
+## 4. <a name="_toc178688701"></a>Troubleshooting
    If you encounter any issues or errors while using the Braintree ZRA Smart Invoice Connector, refer to the troubleshooting guide below:
 
 ### 4.1 Integration Entries
@@ -217,6 +218,7 @@ The ZRA Smart Invoice system allows users to accept or reject goods sitting at c
       - If the **Status** = *Success*, it creates a copy of the entry, sets the **Status** = *New*, clears **Status Message** and attempts to create the Job Queue Entry. May result in Status being set to Validation Error if there are issues processing the data.
     - *Acknowledge Error*: Sets the **Status** to "*Error Acknowledged*". This will let the entry be cleaned up by the "Clear completed integration entries" job.
  
+### 4.2 Contact Us
 - If you are unable to resolve the issue, please feel free to contact the Braintree support team for assistance. 
 
 Email: <bcsupport@braintree.co.za>
