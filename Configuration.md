@@ -1,13 +1,13 @@
 ## 2. <a name="_toc178688687"></a>Setup and Configuration
 
 - [Integration Setup](#integration-setup)
-- [2.2 Commodity Codes](#22-commodity-codes)
-- [2.3 ZRA VAT Types](#23-zra-vat-types)
-- [2.4 VAT Product Posting Groups](#24-vat-product-posting-groups)
-- [2.5 VAT Posting Setups](#25-vat-posting-setups)
-- [2.6 Reason Codes](#26-reason-codes)
-- [2.7 Payment Methods](#27-payment-methods)
-- [2.8 User Management](#28-user-management)
+- [Commodity Codes](#commodity-codes)
+- [ZRA VAT Types](#zra-vat-types)
+- [VAT Product Posting Groups](#vat-product-posting-groups)
+- [VAT Posting Setups](#vat-posting-setups)
+- [Reason Codes](#reason-codes)
+- [Payment Methods](#payment-methods)
+- [User Management](#user-management)
 
 Before using the Braintree ZRA Smart Invoice Connector, you need to set up and configure the system. This involves:
 
@@ -33,12 +33,12 @@ Before using the Braintree ZRA Smart Invoice Connector, you need to set up and c
 
 >The user can download a copy of ZRA Codes used for mapping in the system as described in this document.
 
-### 2.2 <a name="_toc178688689"></a>Commodity Codes
+### <a name="_toc178688689"></a>Commodity Codes
 If service providers do not provide an API endpoint for the commodities, download and import the commodities list from the ZRA Item Category List.
 
 ![image003](./docs/images/image003.png)
 
-### 2.3 <a name="_toc178688690"></a>ZRA VAT Types
+### <a name="_toc178688690"></a>ZRA VAT Types
 A predefined list is created when the extension is installed. This list can be modified as required. 
 
 Description of fields:
@@ -50,27 +50,27 @@ Description of fields:
 
 ![image004](./docs/images/image004.png)
 
-### 2.4 <a name="_toc178688691"></a>VAT Product Posting Groups
+### <a name="_toc178688691"></a>VAT Product Posting Groups
 Link Zambian Tax Codes to VAT Product Posting Groups. This is the code used for Items when registering them with ZRA.
 
 ![image005](./docs/images/image005.png)
 
-### 2.5 <a name="_toc178688692"></a>VAT Posting Setups
+### <a name="_toc178688692"></a>VAT Posting Setups
 Link Zambian Tax Codes to VAT Posting Setup. These are the Tax codes used on document lines when the document is submitted to ZRA.
 
 ![image006](./docs/images/image006.png)
 
-### 2.6 <a name="_toc178688693"></a>Reason Codes
+### <a name="_toc178688693"></a>Reason Codes
 Link the predefined service provider reason codes to the Reason Codes in Business Central.
 
 ![image007](./docs/images/image007.png)
 
-### 2.7 <a name="_toc178688694"></a>Payment Methods
+### <a name="_toc178688694"></a>Payment Methods
 Link supplier defined codes to the existing Payment Methods in Business Central.
 
 ![image008](./docs/images/image008.png)
 
-### 2.8 <a name="_toc178688695"></a>User Management 
+### <a name="_toc178688695"></a>User Management 
 Two Permission Sets have been added:
 
 1. ZRA ALL BTR – For administrators of the integration, that are allowed to change the configuration.
@@ -80,4 +80,3 @@ Two Permission Sets have been added:
 
 
 ![image009](./docs/images/image009.png)
-
