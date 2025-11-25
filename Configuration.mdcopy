@@ -1,4 +1,4 @@
-## <a name="_toc178688687"></a>Setup and Configuration
+## 2. <a name="_toc178688687"></a>Setup and Configuration
 
 - [Integration Setup](#integration-setup)
 - [Commodity Codes](#commodity-codes)
@@ -48,27 +48,27 @@ Description of fields:
 - **Blocked**: *Not used yet, reserved for future use.* 
 - **Requires recommended Retail Price**: When enabled, requires items to be registered with a recommended retail price when this code is used on a transaction.
 
-    ![image004](./docs/images/image004.png)
+![image004](./docs/images/image004.png)
 
 ### <a name="_toc178688691"></a>VAT Product Posting Groups
 Link Zambian Tax Codes to VAT Product Posting Groups. This is the code used for Items when registering them with ZRA.
 
-    ![image005](./docs/images/image005.png)
+![image005](./docs/images/image005.png)
 
 ### <a name="_toc178688692"></a>VAT Posting Setups
 Link Zambian Tax Codes to VAT Posting Setup. These are the Tax codes used on document lines when the document is submitted to ZRA.
 
-    ![image006](./docs/images/image006.png)
+![image006](./docs/images/image006.png)
 
 ### <a name="_toc178688693"></a>Reason Codes
 Link the predefined service provider reason codes to the Reason Codes in Business Central.
 
-    ![image007](./docs/images/image007.png)
+![image007](./docs/images/image007.png)
 
 ### <a name="_toc178688694"></a>Payment Methods
 Link supplier defined codes to the existing Payment Methods in Business Central.
 
-    ![image008](./docs/images/image008.png)
+![image008](./docs/images/image008.png)
 
 ### <a name="_toc178688695"></a>User Management 
 Two Permission Sets have been added:
@@ -79,6 +79,4 @@ Two Permission Sets have been added:
 >The system also maintains a list of users and assigns a unique integer to each user as required by the ZRA interface. This should not require any maintenance by an administrator.
 
 
-    ![image009](./docs/images/image009.png)
-
-[**⬆️ Back to Top**](#integration-setup) &nbsp;&nbsp;&nbsp;&nbsp; [**🏠 Home**](/ZRA-Documentation)
+![image009](./docs/images/image009.png)
