@@ -1,0 +1,466 @@
+---
+layout: default
+title: Feature Request
+---
+
+<div class="feature-request-container">
+  <h2>Submit a Feature Request</h2>
+  <p>We'd love to hear your ideas! Submit a feature request below and discuss it with our team via chat.</p>
+  
+  <div class="request-form-section">
+    <form id="feature-request-form">
+      <div class="form-group">
+        <label for="user-name">Your Name: <span class="required">*</span></label>
+        <input type="text" id="user-name" required placeholder="John Doe">
+      </div>
+      
+      <div class="form-group">
+        <label for="user-email">Your Email: <span class="required">*</span></label>
+        <input type="email" id="user-email" required placeholder="john.doe@example.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="feature-title">Feature Title: <span class="required">*</span></label>
+        <input type="text" id="feature-title" required placeholder="Brief title of your feature request">
+      </div>
+      
+      <div class="form-group">
+        <label for="feature-category">Category: <span class="required">*</span></label>
+        <select id="feature-category" required>
+          <option value="">-- Select Category --</option>
+          <option value="ui-ux">User Interface / UX</option>
+          <option value="performance">Performance</option>
+          <option value="integration">Integration</option>
+          <option value="reporting">Reporting</option>
+          <option value="automation">Automation</option>
+          <option value="security">Security</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="feature-priority">Priority:</label>
+        <select id="feature-priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+          <option value="critical">Critical</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="feature-description">Detailed Description: <span class="required">*</span></label>
+        <textarea id="feature-description" rows="6" required placeholder="Describe your feature request in detail. What problem does it solve? How would it work?"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="use-case">Use Case / Business Value:</label>
+        <textarea id="use-case" rows="4" placeholder="How would this feature benefit you or your organization?"></textarea>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="braintree-button">Submit Feature Request</button>
+        <button type="button" class="braintree-button secondary" onclick="openChatDiscussion()">💬 Discuss via Chat</button>
+      </div>
+    </form>
+    
+    <div id="submission-message" class="submission-message" style="display: none;"></div>
+  </div>
+  
+  <div class="chat-section">
+    <h3>💬 Feature Discussion Chat</h3>
+    <p>Want to discuss your idea before submitting? Chat with our team!</p>
+    
+    <div class="chat-options">
+      <button class="braintree-button" onclick="startTeamsChat()">
+        <span style="font-size: 1.2em;">👥</span> Chat on Microsoft Teams
+      </button>
+      <button class="braintree-button" onclick="sendEmail()">
+        <span style="font-size: 1.2em;">✉</span> Email Discussion
+      </button>
+    </div>
+    
+    <div class="quick-actions">
+      <h4>Quick Actions</h4>
+      <ul>
+        <li><a href="{{ '/TeamsChat' | relative_url }}">Start Teams Chat Session</a></li>
+        <li><a href="mailto:bcsupport@braintree.co.za?subject=Feature Request Discussion">Email Support Team</a></li>
+        <li><a href="{{ '/Troubleshooting' | relative_url }}">View Documentation</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="recent-requests">
+    <h3>Recent Feature Requests</h3>
+    <div class="request-list">
+      <div class="request-item">
+        <div class="request-header">
+          <span class="request-title">Enhanced Reporting Dashboard</span>
+          <span class="request-status status-in-progress">In Progress</span>
+        </div>
+        <p class="request-meta">Submitted by John D. • Category: Reporting • Priority: High</p>
+        <p class="request-excerpt">Request for customizable dashboards with drag-and-drop widgets...</p>
+      </div>
+      
+      <div class="request-item">
+        <div class="request-header">
+          <span class="request-title">API Integration for Third-Party Tools</span>
+          <span class="request-status status-planned">Planned</span>
+        </div>
+        <p class="request-meta">Submitted by Sarah M. • Category: Integration • Priority: Medium</p>
+        <p class="request-excerpt">Enable REST API access for connecting external applications...</p>
+      </div>
+      
+      <div class="request-item">
+        <div class="request-header">
+          <span class="request-title">Dark Mode Theme</span>
+          <span class="request-status status-under-review">Under Review</span>
+        </div>
+        <p class="request-meta">Submitted by Mike L. • Category: UI/UX • Priority: Low</p>
+        <p class="request-excerpt">Add dark mode option to reduce eye strain during extended use...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Form submission handler
+document.getElementById('feature-request-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = {
+    name: document.getElementById('user-name').value,
+    email: document.getElementById('user-email').value,
+    title: document.getElementById('feature-title').value,
+    category: document.getElementById('feature-category').value,
+    priority: document.getElementById('feature-priority').value,
+    description: document.getElementById('feature-description').value,
+    useCase: document.getElementById('use-case').value,
+    timestamp: new Date().toISOString()
+  };
+  
+  // Display success message
+  const messageDiv = document.getElementById('submission-message');
+  messageDiv.innerHTML = `
+    <div class="success-message">
+      <h4>✓ Feature Request Submitted Successfully!</h4>
+      <p>Thank you, ${formData.name}! We've received your feature request: <strong>"${formData.title}"</strong></p>
+      <p>Our team will review it and get back to you at ${formData.email}</p>
+      <p>Would you like to <a href="#" onclick="startTeamsChat(); return false;">discuss this feature via Teams</a>?</p>
+    </div>
+  `;
+  messageDiv.style.display = 'block';
+  
+  // Log to console (in production, this would send to a backend)
+  console.log('Feature Request Submitted:', formData);
+  
+  // Scroll to message
+  messageDiv.scrollIntoView({ behavior: 'smooth' });
+  
+  // Optionally reset form after a delay
+  setTimeout(() => {
+    if (confirm('Would you like to submit another feature request?')) {
+      document.getElementById('feature-request-form').reset();
+      messageDiv.style.display = 'none';
+    }
+  }, 5000);
+});
+
+function openChatDiscussion() {
+  const featureTitle = document.getElementById('feature-title').value;
+  const message = featureTitle 
+    ? `I'd like to discuss a feature request: ${featureTitle}` 
+    : "I'd like to discuss a feature request";
+  
+  const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=bcsupport@braintree.co.za&message=${encodeURIComponent(message)}`;
+  window.location.href = teamsUrl.replace('https://teams.microsoft.com', 'msteams:');
+  
+  setTimeout(() => {
+    const proceed = confirm('Teams should be opening. Click OK to try the web version.');
+    if (proceed) {
+      window.open(teamsUrl, '_blank');
+    }
+  }, 1000);
+}
+
+function startTeamsChat() {
+  const teamsUrl = 'https://teams.microsoft.com/l/chat/0/0?users=bcsupport@braintree.co.za&message=' + 
+                   encodeURIComponent('Hi! I have a feature request to discuss.');
+  window.location.href = teamsUrl.replace('https://teams.microsoft.com', 'msteams:');
+  
+  setTimeout(() => {
+    const proceed = confirm('Teams should be opening. Click OK to try the web version.');
+    if (proceed) {
+      window.open(teamsUrl, '_blank');
+    }
+  }, 1000);
+}
+
+function sendEmail() {
+  const subject = encodeURIComponent('Feature Request Discussion');
+  const body = encodeURIComponent('Hi Braintree Team,\n\nI would like to discuss a feature request.\n\n');
+  window.location.href = `mailto:bcsupport@braintree.co.za?subject=${subject}&body=${body}`;
+}
+</script>
+
+<style>
+.feature-request-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.feature-request-container h2 {
+  color: #328278;
+  margin-bottom: 0.5rem;
+}
+
+.feature-request-container > p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.request-form-section {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #328278;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #d32f2f;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #328278;
+  box-shadow: 0 0 5px rgba(50, 130, 120, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.braintree-button.secondary {
+  background-color: #666;
+  border-color: #666;
+}
+
+.braintree-button.secondary:hover {
+  background-color: #444;
+  border-color: #444;
+}
+
+.submission-message {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.success-message {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.success-message h4 {
+  color: #2e7d32;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  color: #1b5e20;
+  margin: 0.5rem 0;
+}
+
+.chat-section {
+  background-color: #e8f5f3;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.chat-section h3 {
+  color: #328278;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.chat-options {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.quick-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #328278;
+}
+
+.quick-actions h4 {
+  color: #328278;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.quick-actions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-actions li {
+  margin-bottom: 0.75rem;
+}
+
+.quick-actions a {
+  color: #328278;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.quick-actions a:hover {
+  color: #003433;
+  text-decoration: underline;
+}
+
+.recent-requests {
+  margin-top: 3rem;
+}
+
+.recent-requests h3 {
+  color: #328278;
+  margin-bottom: 1.5rem;
+}
+
+.request-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.request-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-left: 4px solid #328278;
+  padding: 1.5rem;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+.request-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.request-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.request-title {
+  font-weight: bold;
+  color: #328278;
+  font-size: 1.1rem;
+}
+
+.request-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-in-progress {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-planned {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-under-review {
+  background-color: #e8f5f3;
+  color: #328278;
+}
+
+.request-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.request-excerpt {
+  color: #333;
+  margin: 0.75rem 0 0 0;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 42em) {
+  .request-form-section,
+  .chat-section {
+    padding: 1rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .braintree-button {
+    width: 100%;
+  }
+  
+  .chat-options {
+    flex-direction: column;
+  }
+  
+  .request-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
