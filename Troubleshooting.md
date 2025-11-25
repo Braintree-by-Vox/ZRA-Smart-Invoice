@@ -1,7 +1,7 @@
-## 4. <a name="_toc178688701"></a>Troubleshooting
+# Troubleshooting
    If you encounter any issues or errors while using the Braintree ZRA Smart Invoice Connector, refer to the troubleshooting guide below:
 
-### 4.1 Integration Entries
+## 4.1 Integration Entries
 
 - Check the Integration Entry or Job Queue Entries for error messages
 - Verify that the system settings are correct
