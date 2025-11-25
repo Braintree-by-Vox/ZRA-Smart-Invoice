@@ -1,6 +1,5 @@
 ﻿# ZRA SMART INVOICE CONNECTOR USER GUIDE
 
-
 - [ZRA SMART INVOICE CONNECTOR USER GUIDE](#zra-smart-invoice-connector-user-guide)
   - [1. Introduction](#1-introduction)
   - [2. Setup and Configuration](#2-setup-and-configuration)
@@ -23,7 +22,6 @@
 
 
 ## 1. <a name="_toc178688686"></a>Introduction
-
    The Braintree ZRA Smart Invoice Connector is a software solution designed to integrate with the Zambia Revenue Authority (ZRA) system, enabling businesses to automate their tax compliance and submission processes. This user guide provides an overview of the system's features and functionality, as well as step-by-step instructions on how to use the system.
 
 ## 2. <a name="_toc178688687"></a>Setup and Configuration

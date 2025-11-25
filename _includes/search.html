@@ -1,0 +1,79 @@
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search documentation...">
+  <div id="search-results"></div>
+</div>
+
+<script>
+(function() {
+  let searchData = [];
+  
+  // Load search data
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(response => response.json())
+    .then(data => {
+      searchData = data;
+    });
+  
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  searchInput.addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (query.length < 2) {
+      searchResults.innerHTML = '';
+      searchResults.style.display = 'none';
+      return;
+    }
+    
+    const results = searchData.filter(item => {
+      return item.title.toLowerCase().includes(query) || 
+             item.content.toLowerCase().includes(query);
+    }).slice(0, 10);
+    
+    if (results.length > 0) {
+      searchResults.innerHTML = results.map(result => {
+        const contentSnippet = getSnippet(result.content, query);
+        return `
+          <div class="search-result-item">
+            <a href="${result.url}">
+              <strong>${highlightText(result.title, query)}</strong>
+              <p>${highlightText(contentSnippet, query)}</p>
+            </a>
+          </div>
+        `;
+      }).join('');
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+      searchResults.style.display = 'block';
+    }
+  });
+  
+  function getSnippet(content, query) {
+    const index = content.toLowerCase().indexOf(query.toLowerCase());
+    if (index === -1) return content.substring(0, 150) + '...';
+    
+    const start = Math.max(0, index - 60);
+    const end = Math.min(content.length, index + query.length + 90);
+    let snippet = content.substring(start, end);
+    
+    if (start > 0) snippet = '...' + snippet;
+    if (end < content.length) snippet = snippet + '...';
+    
+    return snippet;
+  }
+  
+  function highlightText(text, query) {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+  
+  // Close search results when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-container')) {
+      searchResults.style.display = 'none';
+    }
+  });
+})();
+</script>
